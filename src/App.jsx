@@ -1,10 +1,24 @@
-const App = () => {
+import { useState, useEffect } from "react";
+import Navbar from "./components/Navbar";
+import Hero from "./components/Hero";
+import About from "./components/About";
+import Skills from "./components/Skills";
+import Projects from "./components/Projects";
+import Contact from "./components/Contact";
+import Footer from "./components/Footer";
+
+function App() {
+  const [darkMode, setDarkMode] = useState(true);
+
+  useEffect(() => {
+    document.documentElement.classList.toggle("dark", darkMode);
+  }, [darkMode]);
+
   return (
-    <div>
-      <h1 class="text-3xl font-bold underline">
-        Hello world!
-      </h1>
+    <div className={darkMode ? "bg-[#0d1117] text-white" : "bg-[#f0f4f8] text-[#0d1117]"}>
+      <Navbar darkMode={darkMode} setDarkMode={setDarkMode} />
     </div>
-  )
+  );
 }
-export default App
+
+export default App;
